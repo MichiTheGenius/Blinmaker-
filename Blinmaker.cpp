@@ -19,6 +19,7 @@ int eggsNeeded;
 int flourNeeded;
 int milkNeeded;
 
+int smallest;
 bool noBlin()
 {
 	return eggsAmount < eggsMin || flourAmount < flourMin || milkAmount < milkMin;
@@ -39,9 +40,6 @@ void setupPortions()
 	eggPortions = eggsAmount / eggsMin;
 	flourPortions = flourAmount / flourMin;
 	milkPortions = milkAmount / milkMin;;
-	cout << eggPortions << " Egg Portions" << endl;
-	cout << flourPortions << " flour Portions" << endl;
-	cout << milkPortions << " milk Portions" << endl;
 	portions[0] = eggPortions;
 	portions[1] = flourPortions;
 	portions[2] = milkPortions;
@@ -60,8 +58,18 @@ int getSmallestOfArray(int arr[], int length)
 	return smallest;
 }
 
+void setupNeededIngredients()
+{
+	eggsNeeded = smallest * eggsMin;
+	flourNeeded = smallest * flourMin;
+	milkNeeded = smallest * milkMin;
+	cout << "You will need " << eggsNeeded << " eggs." << endl;		
+	cout << "You will need " << flourNeeded << " grams of flour." << endl;		
+	cout << "You will need " << milkNeeded << " milliliters of milk." << endl;
+}
 int main()
 {
+	system("clear");
 	setupAmounts();
 	if(noBlin())
 	{
@@ -70,14 +78,10 @@ int main()
 	else
 	{
 		setupPortions();
-		int smallest = getSmallestOfArray(portions,3);
+		smallest = getSmallestOfArray(portions,3);
 		cout << "You can make " << smallest << " portions of blins, what equates to " << smallest * 4 << " blins!" << endl;
-		eggsNeeded = smallest * eggsMin;
-		flourNeeded = smallest * flourMin;
-		milkNeeded = smallest * milkMin;
-		cout << "You will need " << eggsNeeded << " eggs." << endl;		
-		cout << "You will need " << flourNeeded << " grams of flour." << endl;		
-		cout << "You will need " << milkNeeded << " milliliters of milk." << endl;		
+		setupNeededIngredients();
+				
 	}
 	return 0;
 }
