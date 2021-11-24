@@ -83,7 +83,6 @@ int main()
 	{
 		setupPortions();	
 		setupNeededIngredients();
-
 	}
 	return 0;
 }
