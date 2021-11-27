@@ -75,6 +75,7 @@ int main()
 {
 	system("clear");
 	setupAmounts();
+	cout << "this is a test!" << endl;
 	if(noBlin())
 	{
 		cout << "No blin today, sorry :(" << endl;
